@@ -1,5 +1,7 @@
 ---
+import AccountModal from "../components/AccountModal.astro";
 import Card from "../components/Card.astro";
+import CartModal from "../components/CartModal.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -32,6 +34,7 @@ import Layout from "../layouts/Layout.astro";
             >
             Account
           </label>
+
           <label for="cart" class="btn-primary btn gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +50,8 @@ import Layout from "../layouts/Layout.astro";
             >
             Warenkorb
           </label>
+          <AccountModal />
+          <CartModal />
         </div>
       </div>
       <div class="divider"></div>
@@ -57,7 +62,7 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <footer
-      class="footer absolute sticky top-[100vh] bg-neutral p-10 text-neutral-content"
+      class="footer sticky top-[100vh] bg-neutral p-10 text-neutral-content"
     >
       <div class="max-w-m mx-auto flex justify-end">
         <div class="flex flex-col pr-40 pt-5">
@@ -86,7 +91,7 @@ import Layout from "../layouts/Layout.astro";
                     <div class="stat-title">Getätigte Einkäufe</div>
                     <div class="stat-value">15</div>
                     <div class="stat-desc flex justify-between">
-                      <div>Höchster Preis:</div>
+                      <div>Preis insgesamt:</div>
                       <div class="ml-1">75€</div>
                     </div>
                   </div>
