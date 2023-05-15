@@ -1,21 +1,33 @@
 ---
 ---
 
-<div class="card mb-2 bg-white shadow-xl">
-  <div class="card-body">
-    <h2 class="card-title">Produkt 1</h2>
+<div class="drawer drawer-end">
+  <input id="cart" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <div class="card mb-2 bg-white shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Produkt 1</h2>
 
-    <div class="card-actions">
-      <div class="ml-auto flex flex-col items-end">
-        <p class="text-primary">Menge: 3</p>
-        <p class="text-xl">Preis: 34,99€</p>
-        <button class="btn-neutral btn-xs">Entfernen</button>
+        <div class="card-actions">
+          <div class="ml-auto flex flex-col items-end">
+            <div class="form-control w-full max-w-xs">
+              <label class="label">
+                <span class="pr-2">Menge:</span>
+                <select class="select-bordered select select-sm ml-auto">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </label>
+            </div>
+            <p class="text-xl">Preis: 34,99€</p>
+            <button class="btn-neutral btn-xs">Entfernen</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- 
+    <!-- 
   <script>
     var form = document.getElementById("updateForm");
     form.onsubmit = function (event) {
@@ -160,3 +172,5 @@
     </div>
   </div>
   -->
+  </div>
+</div>
