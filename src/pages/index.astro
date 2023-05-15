@@ -1,106 +1,126 @@
 ---
 import AccountModal from "../components/AccountModal.astro";
 import Card from "../components/Card.astro";
-import CartModal from "../components/CartModal.astro";
+import CartCard from "../components/CartCard.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Shoppr">
-  <div class="min-h-screen">
-    <div class="mx-auto max-w-sm overflow-auto pb-10 md:max-w-4xl">
-      <div class="prose mx-auto mb-5">
-        <h1 class="text-center">Shoppr</h1>
-      </div>
-      <div class="grid items-center justify-between gap-2">
-        <select class="select-bordered select select-sm w-full max-w-xs">
-          <option disabled selected>Language</option>
-          <option>German (DE)</option>
-          <option>English (UK)</option>
-          <option>English (USA)</option>
-        </select>
-        <div class="col-start-2 justify-self-end">
-          <label for="acc" class="btn-primary btn gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              class="h-6 w-6"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              ><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"
-              ></path></svg
-            >
-            Account
-          </label>
+  <div class="drawer drawer-end">
+    <input id="cart" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <div class="min-h-screen">
+        <div class="mx-auto max-w-sm overflow-auto pb-10 md:max-w-4xl">
+          <div class="prose mx-auto mb-5">
+            <h1 class="text-center">Shoppr</h1>
+          </div>
+          <div class="grid items-center justify-between gap-2">
+            <select class="select-bordered select select-sm w-full max-w-xs">
+              <option disabled selected>Language</option>
+              <option>German (DE)</option>
+              <option>English (UK)</option>
+              <option>English (USA)</option>
+            </select>
+            <div class="col-start-2 justify-self-end">
+              <label for="acc" class="btn-primary btn gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"
+                  ></path></svg
+                >
+                Account
+              </label>
 
-          <label for="cart" class="btn-primary btn gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              class="h-6 w-6"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              ><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
-              ></path></svg
-            >
-            Warenkorb
-          </label>
-          <AccountModal />
-          <CartModal />
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-        <Card />
-        <Card />
-      </div>
-    </div>
+              <label for="cart" class="btn-primary btn gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                  ></path></svg
+                >
+                Warenkorb
+              </label>
 
-    <footer
-      class="footer sticky top-[100vh] bg-neutral p-10 text-neutral-content"
-    >
-      <div class="max-w-m mx-auto flex justify-end">
-        <div class="flex flex-col pr-40 pt-5">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 512"
-            width="50"
-            height="50"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            class="fill-current"
-            ><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-            <path
-              d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"
-            ></path></svg
-          >
-          <p>Angelina Otto<br />Erstellt schlechte Frontends seit 2023</p>
-        </div>
-        <div>
-          <span class="footer-title">Stastik</span>
-          <div class="grid grid-flow-col gap-4">
-            {
-              (
-                <div class="stats max-w-sm bg-neutral-100 shadow">
-                  <div class="stat">
-                    <div class="stat-title">Getätigte Einkäufe</div>
-                    <div class="stat-value">15</div>
-                    <div class="stat-desc flex justify-between">
-                      <div>Preis insgesamt:</div>
-                      <div class="ml-1">75€</div>
-                    </div>
-                  </div>
-                </div>
-              )
-            }
+              <AccountModal />
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+            <Card />
+            <Card />
           </div>
         </div>
+
+        <footer
+          class="footer sticky top-[100vh] bg-neutral p-10 text-neutral-content"
+        >
+          <div class="max-w-m mx-auto flex justify-end">
+            <div class="flex flex-col pr-40 pt-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512"
+                width="50"
+                height="50"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                class="fill-current"
+                ><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"
+                ></path></svg
+              >
+              <p>Angelina Otto<br />Erstellt schlechte Frontends seit 2023</p>
+            </div>
+            <div>
+              <span class="footer-title">Stastik</span>
+              <div class="grid grid-flow-col gap-4">
+                {
+                  (
+                    <div class="stats max-w-sm bg-neutral-100 shadow">
+                      <div class="stat">
+                        <div class="stat-title">Getätigte Einkäufe</div>
+                        <div class="stat-value">15</div>
+                        <div class="stat-desc flex justify-between">
+                          <div>Preis insgesamt:</div>
+                          <div class="ml-1">75€</div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
-    </footer>
+    </div>
+    <div class="drawer-side">
+      <label for="cart" class="drawer-overlay"></label>
+      <ul class="w-80 grow bg-base-100 p-4 text-base-content">
+        <li class="text-xl font-bold">Warenkorb</li>
+        <li><div class="divider"></div></li>
+        <li><CartCard /></li>
+        <li><CartCard /></li>
+        <li><CartCard /></li>
+
+        <li class="my-4 text-right text-xl font-bold">Gesamt: 70 €</li>
+        <li>
+          <button class="btn-accent btn w-full max-w-xs">Bestellen</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </Layout>

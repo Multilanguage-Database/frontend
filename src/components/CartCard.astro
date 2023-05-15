@@ -1,0 +1,162 @@
+---
+---
+
+<div class="card mb-2 bg-white shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">Produkt 1</h2>
+
+    <div class="card-actions">
+      <div class="ml-auto flex flex-col items-end">
+        <p class="text-primary">Menge: 3</p>
+        <p class="text-xl">Preis: 34,99€</p>
+        <button class="btn-neutral btn-xs">Entfernen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+  <script>
+    var form = document.getElementById("updateForm");
+    form.onsubmit = function (event) {
+      var xhr = new XMLHttpRequest();
+      var formData = new FormData(form);
+      //open the request
+      xhr.open("PUT", `http://localhost:8080/friend/update/${friend._id}`, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+  
+      //send the form data
+      xhr.send(JSON.stringify(Object.fromEntries(formData)));
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+          form.reset();
+          location.reload(); //reset form after AJAX success or do something else
+        }
+      };
+      //Fail the onsubmit to avoid page refresh.
+      return false;
+    };
+  </script>
+  
+  <input type="checkbox" id="update" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box max-w-sm">
+      <h3 class="text-lg font-bold">Bearbeiten</h3>
+  
+      <form
+        action=`http://localhost:8080/friend/update/${friend._id}`
+        method="put"
+      >
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Vorname</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            value={friend.firstName}
+            class="input-bordered input w-full max-w-xs"
+          />
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Nachname</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            value={friend.lastName}
+            class="input-bordered input w-full max-w-xs"
+          />
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Geburtstag</span>
+          </label>
+          <input
+            type="date"
+            placeholder="Type here"
+            value={dateToInputValue(bdayToDate(friend.bday))}
+            class="input-bordered input w-full max-w-xs"
+          />
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Liebingsessen</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            value={friend.food}
+            class="input-bordered input w-full max-w-xs"
+          />
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Liebingstier</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            value={friend.animal}
+            class="input-bordered input w-full max-w-xs"
+          />
+        </div>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Liebingsdino</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type here"
+            value={friend.dino}
+            class="input-bordered input w-full max-w-xs"
+          />
+        </div>
+        <div class="modal-action">
+          <input type="submit" class="btn-success btn" value="Speichern" />
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    var form = document.getElementById("delete");
+    form.onsubmit = function (event) {
+      var xhr = new XMLHttpRequest();
+      var formData = new FormData(form);
+      //open the request
+      xhr.open(
+        "DELETE",
+        `http://localhost:8080/friend/delete/${friend._id}`,
+        true
+      );
+      //send the form data
+      xhr.send(JSON.stringify(Object.fromEntries(formData)));
+  
+      xhr.onload = function () {
+        location.reload();
+      }; //reset form after AJAX success or do something else
+      //Fail the onsubmit to avoid page refresh.
+      return false;
+    };
+  </script>
+  
+  <input type="checkbox" id="delete" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Bist du dir sicher?</h3>
+      <p class="py-4">Möchstest du wirklich weniger Freunde haben?</p>
+      <div class="modal-open modal-action">
+        <label for="delete" class="btn-ghost btn">Abbruch</label>
+        <form
+          action=`http://localhost:8080/friend/delete/${friend._id}`
+          method="delete"
+        >
+          <input type="submit" class="btn-error modal-open btn" value="OK" />
+        </form>
+      </div>
+    </div>
+  </div>
+  -->
