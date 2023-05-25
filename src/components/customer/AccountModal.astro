@@ -1,0 +1,40 @@
+---
+import LoginModal from "../customer/LoginModal.jsx";
+import RegisterModal from "../customer/RegisterModal.jsx";
+---
+
+<div>
+  <input type="checkbox" id="acc" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box max-w-sm">
+      <div class="tabs">
+        <a id="logintab" class="tab-lifted tab tab-active tab-lg">Login</a>
+        <a id="registertab" class="tab-lifted tab tab-lg">Registrieren</a>
+      </div>
+
+      <RegisterModal client:visible />
+      <LoginModal client:visible />
+
+      <script>
+        const loginTab = document.getElementById("logintab");
+        const registerTab = document.getElementById("registertab");
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerform");
+
+        loginTab.addEventListener("click", () => {
+          loginTab.classList.add("tab-active");
+          registerTab.classList.remove("tab-active");
+          loginForm.classList.remove("hidden");
+          registerForm.classList.add("hidden");
+        });
+
+        registerTab.addEventListener("click", () => {
+          loginTab.classList.remove("tab-active");
+          registerTab.classList.add("tab-active");
+          loginForm.classList.add("hidden");
+          registerForm.classList.remove("hidden");
+        });
+      </script>
+    </div>
+  </div>
+</div>

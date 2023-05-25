@@ -1,36 +1,30 @@
 ---
+import type { Product } from "../typings/product.js";
+
+export interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
 ---
 
 <div class="card bg-white shadow-xl">
   <div class="card-body">
-    <h2 class="card-title">Produkt 1</h2>
+    <h2 class="card-title">{product.title}</h2>
     <div class="collapse-plus rounded-box collapse bg-neutral-100 shadow-md">
       <input type="checkbox" />
       <div class="text-m collapse-title font-medium">Beschreibung lesen</div>
       <div class="collapse-content">
         <p>
-          Dieses Produkt ist einfach ausgezeichnet. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec justo tortor, faucibus nec nisl
-          quis, sodales finibus risus. Vestibulum eu neque ut ligula commodo
-          malesuada quis a enim. Donec porttitor lectus id orci scelerisque
-          imperdiet eget at turpis. Nulla semper, sapien vel hendrerit gravida,
-          eros odio maximus mi, non dictum odio ipsum euismod odio. Praesent
-          malesuada neque a urna pellentesque, non accumsan ipsum fringilla.
-          Duis sollicitudin justo eget gravida vulputate. Donec porttitor
-          laoreet velit. Vestibulum quis dolor nunc. Ut lacus sem, bibendum
-          vitae pharetra nec, iaculis sed metus. Etiam porttitor mi eget orci
-          vehicula, vitae ultricies nunc imperdiet. Integer lacinia nisi non
-          nunc varius aliquam. Fusce pellentesque mauris non imperdiet accumsan.
-          Aenean interdum aliquet felis, ut pellentesque augue. Donec finibus
-          risus nec orci hendrerit sollicitudin.
+          {product.description}
         </p>
       </div>
     </div>
 
     <div class="card-actions">
       <div>
-        <p class="text-primary">Bestand: 3</p>
-        <p class="text-xl">Preis: 34,99€</p>
+        <p class="text-primary">Bestand: {product.quantity}</p>
+        <p class="text-xl">Preis: {product.price}€</p>
       </div>
 
       <label for="cart" class="btn-accent btn ml-auto">In den Warenkorb</label>

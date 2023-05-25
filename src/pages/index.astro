@@ -1,8 +1,14 @@
 ---
-import AccountModal from "../components/AccountModal.astro";
 import Card from "../components/Card.astro";
-import CartCard from "../components/CartCard.astro";
+import CartCard from "../components/cart/CartCard.astro";
+import PaymentMethod from "../components/cart/PaymentMethod.astro";
+import AccountModal from "../components/customer/AccountModal.astro";
 import Layout from "../layouts/Layout.astro";
+import type { AllProductsResponse } from "../typings/product.js";
+
+const products: AllProductsResponse = await fetch(
+  "http://localhost:8080/product"
+).then((response) => response.json());
 ---
 
 <Layout title="Shoppr">
@@ -59,8 +65,7 @@ import Layout from "../layouts/Layout.astro";
           </div>
           <div class="divider"></div>
           <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-            <Card />
-            <Card />
+            {products.map((product) => <Card product={product} />)}
           </div>
         </div>
 
@@ -114,11 +119,12 @@ import Layout from "../layouts/Layout.astro";
         <li><div class="divider"></div></li>
         <li><CartCard /></li>
         <li><CartCard /></li>
-        <li><CartCard /></li>
-
         <li class="my-4 text-right text-xl font-bold">Gesamt: 70 €</li>
+        <li><div class="divider"></div></li>
+        <li><PaymentMethod /></li>
+        <li><PaymentMethod /></li>
         <li>
-          <button class="btn-accent btn w-full max-w-xs">Bestellen</button>
+          <button class="btn-accent btn mt-4 w-full max-w-xs">Bestellen</button>
         </li>
       </ul>
     </div>
