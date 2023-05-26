@@ -22,46 +22,51 @@ export default function CreateCustomerModal() {
         headers: { "Content-Type": "application/json" },
         })
         .then(() =>  {
-        window.location.reload();
-        return null;
+            document.cookie = "customerEmail: " + email; 
+            window.location.reload();
+            return null;
         })
         .catch((error) => {
-        console.log(error);
-        return error;
+            console.log(error);
+            return error;
         })
   };
 
   return (
     <form onSubmit={handleSubmit} id="registerform" className="hidden">
         <div className="flex justify-end">
-        <div className="form-control w-full max-w-xs pr-2">
-            <label className="label">
-                <span className="label-text">Vorname</span>
-            </label>
-            <input
-            type="text"
-            value={firstName}
-            onChange={(e) => {
-                setFirstName(e.target.value);
-            }}
-            placeholder="Hier eingeben"
-            className="input-bordered input w-full max-w-xs"
-            name="firstName"
-            required
-            />
-        </div>
-        <div className="form-control w-full max-w-xs">
-            <label className="label">
-            <span className="label-text">Nachname</span>
-            </label>
-            <input
-            type="text"
-            placeholder="Hier eingeben"
-            className="input-bordered input w-full max-w-xs"
-            name="lastName"
-            required
-            />
-        </div>
+            <div className="form-control w-full max-w-xs pr-2">
+                <label className="label">
+                    <span className="label-text">Vorname</span>
+                </label>
+                <input
+                type="text"
+                value={firstName}
+                onChange={(e) => {
+                    setFirstName(e.target.value);
+                }}
+                placeholder="Hier eingeben"
+                className="input-bordered input w-full max-w-xs"
+                name="firstName"
+                required
+                />
+            </div>
+            <div className="form-control w-full max-w-xs">
+                <label className="label">
+                <span className="label-text">Nachname</span>
+                </label>
+                <input
+                type="text"
+                value={lastName}
+                onChange={(e) => {
+                    setLastName(e.target.value);
+                }}
+                placeholder="Hier eingeben"
+                className="input-bordered input w-full max-w-xs"
+                name="lastName"
+                required
+                />
+            </div>
         </div>
 
         <div className="form-control w-full max-w-xs">
@@ -70,6 +75,10 @@ export default function CreateCustomerModal() {
         </label>
         <input
             type="email"
+            value={email}
+            onChange={(e) => {
+                setEmail(e.target.value);
+            }}
             placeholder="Hier eingeben"
             className="input-bordered input w-full max-w-xs"
             name="email"
@@ -82,6 +91,10 @@ export default function CreateCustomerModal() {
         </label>
         <input
             type="password"
+            value={password}
+            onChange={(e) => {
+                setPassword(e.target.value);
+            }}
             placeholder="Hier eingeben"
             className="input-bordered input w-full max-w-xs"
             name="password"
@@ -94,6 +107,10 @@ export default function CreateCustomerModal() {
         </label>
         <input
             type="text"
+            value={street}
+            onChange={(e) => {
+                setStreet(e.target.value);
+            }}
             placeholder="Hier eingeben"
             className="input-bordered input w-full max-w-xs"
             name="street"
@@ -107,9 +124,13 @@ export default function CreateCustomerModal() {
             </label>
             <input
             type="text"
+            value={house}
+            onChange={(e) => {
+                setHouse(e.target.value);
+            }}
             placeholder="Hier eingeben"
             className="input-bordered input w-full max-w-xs"
-            name="lastName"
+            name="house"
             required
             />
         </div>
@@ -119,6 +140,10 @@ export default function CreateCustomerModal() {
             </label>
             <input
             type="text"
+            value={zip}
+            onChange={(e) => {
+                setZip(e.target.value);
+            }}
             placeholder="Hier eingeben"
             className="input-bordered input w-full max-w-xs"
             name="plz"
@@ -133,6 +158,10 @@ export default function CreateCustomerModal() {
         </label>
         <input
             type="text"
+            value={city}
+            onChange={(e) => {
+                setCity(e.target.value);
+            }}
             placeholder="Hier eingeben"
             className="input-bordered input w-full max-w-xs"
             name="city"
@@ -143,7 +172,14 @@ export default function CreateCustomerModal() {
         <label className="label">
             <span className="label-text">Land</span>
         </label>
-        <select className="select-bordered select w-full max-w-xs">
+        <select 
+            name="country" 
+            className="select-bordered select w-full max-w-xs" 
+            value={country}
+            onChange={(e) => {
+                setCountry(e.target.value);
+            }}
+            >
             <option disabled selected>Auswählen</option>
             <option>Deutschland</option>
             <option>Schweiz</option>
@@ -153,7 +189,7 @@ export default function CreateCustomerModal() {
         </div>
         <div className="modal-open modal-action">
         <label htmlFor="acc" className="btn-ghost modal-open btn"> Abbruch</label>
-        <button className="btn-primary modal-open btn" type="submit">
+        <button className="btn-primary btn" type="submit">
             Registrieren
         </button>
         </div>
