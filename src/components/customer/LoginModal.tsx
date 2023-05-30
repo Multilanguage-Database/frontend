@@ -10,7 +10,7 @@ export default function LoginCustomerModal() {
 
         try {
           await axios.get("http://localhost:8080/customer", {params: {email, password}});
-          document.cookie = "customerEmail: " + email;
+          document.cookie = "customerEmail=customerEmail: " + email;
           window.location.reload();
           return null;
         } catch (error) {

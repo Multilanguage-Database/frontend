@@ -4,6 +4,7 @@ export interface Customer {
     lastName: string;
     email: string;
     password: string;
+    cartId: string;
 }
 
 export type OneCustomerResponse = Customer;

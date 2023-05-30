@@ -1,4 +1,11 @@
 ---
+import type { PaymentMethod } from "../typings/paymentMethod.js";
+
+export interface Props {
+  paymentMethod: PaymentMethod;
+}
+
+const { paymentMethod } = Astro.props;
 ---
 
 <div class="form-control mb-2 rounded-md">
@@ -10,8 +17,8 @@
         class="radio checked:bg-neutral"
         checked
       />
-      <span class="label-text text-lg">PayPal</span>
+      <span class="label-text text-lg">{paymentMethod.name}</span>
     </label>
-    <p>Eine Bazahlmethode für Online Kredite. Mit sehr sehr langem Text.</p>
+    <p>{paymentMethod.description}</p>
   </div>
 </div>

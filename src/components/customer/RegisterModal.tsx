@@ -22,7 +22,8 @@ export default function CreateCustomerModal() {
         headers: { "Content-Type": "application/json" },
         })
         .then(() =>  {
-            document.cookie = "customerEmail: " + email; 
+            document.cookie = "customerEmail=customerEmail: " + email;
+            document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
             window.location.reload();
             return null;
         })

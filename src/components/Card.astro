@@ -28,26 +28,100 @@ const { product } = Astro.props;
       </div>
 
       <div
-        class="tooltip tooltip-bottom tooltip-primary ml-auto"
+        class="cartButton tooltip tooltip-bottom tooltip-primary ml-auto"
         data-tip="Bitte melde dich an."
       >
-        <label for="cart" class="cartButton btn-accent btn-disabled btn"
-          >In den Warenkorb</label
-        >
+        <label for="cart" class="btn-disabled btn">In den Warenkorb</label>
       </div>
+      <label for="cart" class="cartActiveButton btn-accent btn ml-auto hidden"
+        >In den Warenkorb</label
+      >
     </div>
   </div>
 </div>
 
 <script>
+  import axios from "axios";
+
+  let activeButtons = document.querySelectorAll(".cartActiveButton");
+  import type { OneCustomerResponse } from "../typings/customer.js";
+
   let account;
   setTimeout(() => {
     account = document.getElementById("account").innerHTML;
     if (account !== "Account") {
       let buttons = document.querySelectorAll(".cartButton");
+
       [].forEach.call(buttons, function (e) {
-        e.classList.remove("btn-disabled");
+        e.classList.add("hidden");
+      });
+
+      [].forEach.call(activeButtons, function (e) {
+        e.classList.remove("hidden");
       });
     }
   }, 200);
+
+  async function createCart() {
+    var cookies = document.cookie.split(";");
+    var hasCartCookie = false;
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.includes("cart")) {
+        hasCartCookie = true;
+        break;
+      }
+    }
+
+    if (!hasCartCookie) {
+      let customer: OneCustomerResponse;
+      if (
+        document.cookie
+          .split(";")
+          .some((item) => item.includes("customerEmail"))
+      ) {
+        async function getCustomerEmailFromCookie() {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith("customerEmail")) {
+              const email = cookie
+                .substring("customerEmail=customerEmail: ".length)
+                .trim();
+              console.log(email);
+              return email;
+            }
+          }
+          return null; // Return null if the cookie is not found
+        }
+        const customerEmail = await getCustomerEmailFromCookie();
+
+        customer = await fetch(
+          "http://localhost:8080/customer/email?email=" + customerEmail
+        ).then((response) => response.json());
+
+        axios
+          .post(
+            "http://localhost:8080/cart",
+            { email: customer.email },
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          )
+          .then(() => {
+            document.cookie = "cart=cart";
+            return null;
+          })
+          .catch((error) => {
+            console.log(error);
+            return error;
+          });
+      }
+      return false;
+    }
+  }
+  [].forEach.call(activeButtons, function (e) {
+    e.addEventListener("click", createCart);
+  });
 </script>
