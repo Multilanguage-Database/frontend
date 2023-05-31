@@ -26,6 +26,7 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
   let cartProducts: AllCartProductsResponse;
   let cartBtn = document.getElementById("cartBasicButton");
   let cartActiveButton = document.getElementById("cartActiveButton");
+  let buyButton = document.getElementById("buyButton");
 
   if (
     document.cookie.split(";").some((item) => item.includes("customerEmail"))
@@ -38,7 +39,6 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
           const email = cookie
             .substring("customerEmail=customerEmail: ".length)
             .trim();
-          console.log(email);
           cartBtn.classList.add("hidden");
           cartActiveButton.classList.remove("hidden");
           return email;
@@ -55,6 +55,16 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
     account = customer.firstName;
 
     document.getElementById("account").innerHTML = account;
+
+    function generateComponent(data) {
+      console.log(customer.cartId);
+      const template = document.getElementById("productCardTemplate");
+      const container = document.getElementsByClassName("cardProducts");
+
+      data.array.forEach((item) => {
+        const component = template.content.cloneNode(true);
+      });
+    }
 
     async function cartAction() {
       var cookies = document.cookie.split(";");
@@ -89,7 +99,15 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
 
       cartProducts = await fetch(
         "http://localhost:8080/cartproduct/" + customer.cartId
-      ).then((response) => response.json());
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data === undefined) {
+            generateComponent(data);
+            buyButton.classList.remove("btn-disabled");
+          }
+          buyButton.classList.add("btn-disabled");
+        });
 
       return false;
     }
@@ -227,7 +245,7 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
     </div>
     <div class="drawer-side">
       <label for="cart" class="drawer-overlay"></label>
-      <ul class="w-80 grow bg-base-100 p-4 text-base-content">
+      <ul class="cardProducts w-80 grow bg-base-100 p-4 text-base-content">
         <li class="text-xl font-bold">Warenkorb</li>
         <li><div class="divider"></div></li>
         <li><CartCard /></li>
@@ -240,7 +258,9 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
           ))
         }
         <li>
-          <button class="btn-accent btn mt-4 w-full max-w-xs">Bestellen</button>
+          <button id="buyButton" class="btn-accent btn mt-4 w-full max-w-xs"
+            >Bestellen</button
+          >
         </li>
       </ul>
     </div>
