@@ -4,6 +4,7 @@ import { defineConfig } from "astro/config";
 
 const config = defineConfig({
   integrations: [react(), tailwind()],
+  output: 'server'
 });
 
 export default defineConfig(config);

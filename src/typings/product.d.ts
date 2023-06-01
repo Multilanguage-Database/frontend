@@ -7,3 +7,5 @@ export interface Product {
   }
 
 export type AllProductsResponse = Product[];
+
+export type OneProductResponse = Product;

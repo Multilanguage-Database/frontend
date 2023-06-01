@@ -1,5 +1,9 @@
 ---
 import type { Product } from "../typings/product.js";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 export interface Props {
   product: Product;
@@ -13,7 +17,9 @@ const { product } = Astro.props;
     <h2 class="card-title">{product.title}</h2>
     <div class="collapse-plus rounded-box collapse bg-neutral-100 shadow-md">
       <input type="checkbox" />
-      <div class="text-m collapse-title font-medium">Beschreibung lesen</div>
+      <div class="text-m collapse-title font-medium">
+        {t("card.description")}
+      </div>
       <div class="collapse-content">
         <p>
           {product.description}
@@ -23,18 +29,18 @@ const { product } = Astro.props;
 
     <div class="card-actions">
       <div>
-        <p class="text-primary">Bestand: {product.quantity}</p>
-        <p class="text-xl">Preis: {product.price}€</p>
+        <p class="text-primary">{t("card.quantity")}: {product.quantity}</p>
+        <p class="text-xl">{t("card.price")}: {product.price}{t("currency")}</p>
       </div>
 
       <div
         class="cartButton tooltip tooltip-bottom tooltip-primary ml-auto"
         data-tip="Bitte melde dich an."
       >
-        <label for="cart" class="btn-disabled btn">In den Warenkorb</label>
+        <label for="cart" class="btn-disabled btn">{t("card.cart")}</label>
       </div>
       <label for="cart" class="cartActiveButton btn-accent btn ml-auto hidden"
-        >In den Warenkorb</label
+        >{t("card.cart")}</label
       >
     </div>
   </div>

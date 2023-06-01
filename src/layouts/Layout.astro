@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
 export interface Props {
   title: string;
 }
@@ -6,7 +10,7 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<html lang="de" data-theme="emerald">
+<html lang={lang} data-theme="emerald">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

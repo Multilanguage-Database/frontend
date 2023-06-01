@@ -1,6 +1,10 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
 import LoginModal from "../customer/LoginModal.jsx";
 import RegisterModal from "../customer/RegisterModal.jsx";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div>
@@ -9,7 +13,7 @@ import RegisterModal from "../customer/RegisterModal.jsx";
     <div class="modal-box max-w-sm">
       <div class="tabs">
         <a id="logintab" class="tab-lifted tab tab-active tab-lg">Login</a>
-        <a id="registertab" class="tab-lifted tab tab-lg">Registrieren</a>
+        <a id="registertab" class="tab-lifted tab tab-lg">{t("register")}</a>
       </div>
 
       <RegisterModal client:visible />

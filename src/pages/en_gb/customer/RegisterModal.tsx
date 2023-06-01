@@ -38,7 +38,7 @@ export default function CreateCustomerModal() {
         <div className="flex justify-end">
             <div className="form-control w-full max-w-xs pr-2">
                 <label className="label">
-                    <span className="label-text">Vorname</span>
+                    <span className="label-text">First Name</span>
                 </label>
                 <input
                 type="text"
@@ -46,7 +46,7 @@ export default function CreateCustomerModal() {
                 onChange={(e) => {
                     setFirstName(e.target.value);
                 }}
-                placeholder="Hier eingeben"
+                placeholder="Enter here"
                 className="input-bordered input w-full max-w-xs"
                 name="firstName"
                 required
@@ -54,7 +54,7 @@ export default function CreateCustomerModal() {
             </div>
             <div className="form-control w-full max-w-xs">
                 <label className="label">
-                <span className="label-text">Nachname</span>
+                <span className="label-text">Last Name</span>
                 </label>
                 <input
                 type="text"
@@ -62,7 +62,7 @@ export default function CreateCustomerModal() {
                 onChange={(e) => {
                     setLastName(e.target.value);
                 }}
-                placeholder="Hier eingeben"
+                placeholder="Enter here"
                 className="input-bordered input w-full max-w-xs"
                 name="lastName"
                 required
@@ -80,7 +80,7 @@ export default function CreateCustomerModal() {
             onChange={(e) => {
                 setEmail(e.target.value);
             }}
-            placeholder="Hier eingeben"
+            placeholder="Enter here"
             className="input-bordered input w-full max-w-xs"
             name="email"
             required
@@ -88,7 +88,7 @@ export default function CreateCustomerModal() {
         </div>
         <div className="form-control w-full max-w-xs">
         <label className="label">
-            <span className="label-text">Passwort</span>
+            <span className="label-text">Password</span>
         </label>
         <input
             type="password"
@@ -96,7 +96,7 @@ export default function CreateCustomerModal() {
             onChange={(e) => {
                 setPassword(e.target.value);
             }}
-            placeholder="Hier eingeben"
+            placeholder="Enter here"
             className="input-bordered input w-full max-w-xs"
             name="password"
             required
@@ -104,7 +104,7 @@ export default function CreateCustomerModal() {
         </div>
         <div className="form-control w-full max-w-xs">
         <label className="label">
-            <span className="label-text">Straße</span>
+            <span className="label-text">Street</span>
         </label>
         <input
             type="text"
@@ -112,7 +112,7 @@ export default function CreateCustomerModal() {
             onChange={(e) => {
                 setStreet(e.target.value);
             }}
-            placeholder="Hier eingeben"
+            placeholder="Enter here"
             className="input-bordered input w-full max-w-xs"
             name="street"
             required
@@ -121,7 +121,7 @@ export default function CreateCustomerModal() {
         <div className="flex justify-end">
         <div className="form-control w-full max-w-xs pr-2">
             <label className="label">
-            <span className="label-text">Hausnr.</span>
+            <span className="label-text">House No.</span>
             </label>
             <input
             type="text"
@@ -129,7 +129,7 @@ export default function CreateCustomerModal() {
             onChange={(e) => {
                 setHouse(e.target.value);
             }}
-            placeholder="Hier eingeben"
+            placeholder="Enter here"
             className="input-bordered input w-full max-w-xs"
             name="house"
             required
@@ -137,7 +137,7 @@ export default function CreateCustomerModal() {
         </div>
         <div className="form-control w-full max-w-xs">
             <label className="label">
-            <span className="label-text">PLZ</span>
+            <span className="label-text">ZIP</span>
             </label>
             <input
             type="text"
@@ -145,7 +145,7 @@ export default function CreateCustomerModal() {
             onChange={(e) => {
                 setZip(e.target.value);
             }}
-            placeholder="Hier eingeben"
+            placeholder="Enter here"
             className="input-bordered input w-full max-w-xs"
             name="plz"
             required
@@ -155,7 +155,7 @@ export default function CreateCustomerModal() {
 
         <div className="form-control w-full max-w-xs">
         <label className="label">
-            <span className="label-text">Stadt</span>
+            <span className="label-text">City</span>
         </label>
         <input
             type="text"
@@ -163,7 +163,7 @@ export default function CreateCustomerModal() {
             onChange={(e) => {
                 setCity(e.target.value);
             }}
-            placeholder="Hier eingeben"
+            placeholder="Enter here"
             className="input-bordered input w-full max-w-xs"
             name="city"
             required
@@ -171,7 +171,7 @@ export default function CreateCustomerModal() {
         </div>
         <div className="form-control w-full max-w-xs">
         <label className="label">
-            <span className="label-text">Land</span>
+            <span className="label-text">Country</span>
         </label>
         <select 
             name="country" 
@@ -181,17 +181,18 @@ export default function CreateCustomerModal() {
                 setCountry(e.target.value);
             }}
             >
-            <option disabled selected>Auswählen</option>
-            <option>Deutschland</option>
-            <option>Schweiz</option>
-            <option>Österreich</option>
-            <option>Großbritannien</option>
+            <option disabled selected>Choose Country</option>
+            <option>Great Britain</option>
+            <option>USA</option>
+            <option>Germany</option>
+            <option>Switzerland</option>
+            <option>Austria</option>
         </select>
         </div>
         <div className="modal-open modal-action">
-        <label htmlFor="acc" className="btn-ghost modal-open btn"> Abbruch</label>
+        <label htmlFor="acc" className="btn-ghost modal-open btn"> Cancel</label>
         <button className="btn-primary btn" type="submit">
-            Registrieren
+            Register
         </button>
         </div>
     </form>

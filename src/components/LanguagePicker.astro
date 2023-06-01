@@ -1,0 +1,19 @@
+---
+import { languages } from "../i18n/ui";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<select
+  class="select-bordered select select-sm w-full max-w-xs"
+  onchange="location = this.value;"
+>
+  <option>{t("language.choose")}</option>
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <option value={`/${lang}/`}>{label}</option>
+    ))
+  }
+</select>
