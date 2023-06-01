@@ -95,15 +95,22 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
       var cookies = document.cookie.split(";");
       var hasCartCookie = false;
 
-      for (var i = 0; i < cookies.length; i++) {
+      if (customer.cartId !== null) {
+        document.cookie = "cart=cart;path=/;";
+        hasCartCookie = true;
+      }
+
+      /*for (var i = 0; i < cookies.length; i++) {
         var cookie = cookies[i].trim(); // Trim whitespace if necessary
         if (cookie.includes("cart")) {
           hasCartCookie = true;
           break;
         }
       }
+      */
 
       if (!hasCartCookie) {
+        console.log("Hey");
         axios
           .post(
             "http://localhost:8080/cart",
@@ -113,7 +120,7 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
             }
           )
           .then(() => {
-            document.cookie = "cart=cart";
+            document.cookie = "cart=cart;path=/;";
             return null;
           })
           .catch((error) => {

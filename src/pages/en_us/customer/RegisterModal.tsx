@@ -31,7 +31,7 @@ export default function CreateCustomerModal() {
                 ";expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
               }
             }
-            document.cookie = "customerEmail=customerEmail: " + email;
+            document.cookie = "customerEmail=customerEmail: " + email + ";path=/;";
             document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
             window.location.reload();
             return null;

@@ -20,7 +20,7 @@ export default function LoginCustomerModal() {
             }
           }
           document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
-          document.cookie = "customerEmail=customerEmail: " + email;
+          document.cookie = "customerEmail=customerEmail: " + email + ";path=/;";
           window.location.reload();
           return null;
         } catch (error) {

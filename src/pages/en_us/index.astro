@@ -1,6 +1,5 @@
 ---
 import Card from "../../components/Card.astro";
-import CartCard from "../../components/cart/CartCard.astro";
 import PaymentMethod from "../../components/cart/PaymentMethod.astro";
 import AccountModal from "./customer/AccountModal.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -94,12 +93,9 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
       var cookies = document.cookie.split(";");
       var hasCartCookie = false;
 
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim(); // Trim whitespace if necessary
-        if (cookie.includes("cart")) {
-          hasCartCookie = true;
-          break;
-        }
+      if (customer.cartId !== null) {
+        document.cookie = "cart=cart;path=/;";
+        hasCartCookie = true;
       }
 
       if (!hasCartCookie) {
@@ -112,7 +108,7 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
             }
           )
           .then(() => {
-            document.cookie = "cart=cart";
+            document.cookie = "cart=cart;path=/;";
             return null;
           })
           .catch((error) => {
