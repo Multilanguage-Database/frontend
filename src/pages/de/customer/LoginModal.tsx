@@ -10,6 +10,16 @@ export default function LoginCustomerModal() {
 
         try {
           await axios.get("http://localhost:8080/customer", {params: {email, password}});
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim(); // Trim whitespace if necessary
+            if (cookie.startsWith("customerEmail")) {
+              console.log(cookie);
+              document.cookie = cookie +
+              ";expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+            }
+          }
+          document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
           document.cookie = "customerEmail=customerEmail: " + email;
           window.location.reload();
           return null;
