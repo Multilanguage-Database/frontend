@@ -100,17 +100,7 @@ const paymentMethod: AllPaymentMethodsResponse = await fetch(
         hasCartCookie = true;
       }
 
-      /*for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim(); // Trim whitespace if necessary
-        if (cookie.includes("cart")) {
-          hasCartCookie = true;
-          break;
-        }
-      }
-      */
-
       if (!hasCartCookie) {
-        console.log("Hey");
         axios
           .post(
             "http://localhost:8080/cart",
